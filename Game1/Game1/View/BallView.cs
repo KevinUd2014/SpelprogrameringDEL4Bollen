@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Game1.Model;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -9,10 +11,30 @@ namespace Game1.View
 {
     class BallView
     {
+        Texture2D box;
+        private Camera camera;
+        private BallSimulation ballSimulation;
+        Texture2D ball;
 
-        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
+        public BallView(GraphicsDeviceManager graphics, BallSimulation BallSimulation, ContentManager Content)// en konstruktor som laddar in först i klassen!
         {
+            //this.graphics = graphics.GraphicsDevice;//
+            
+            ball = Content.Load<Texture2D>("master_ball.png");//laddar in bollen //detta görs bara en gång!
 
+            box = new Texture2D(graphics.GraphicsDevice, 1, 1);//denna skapar en box
+            box.SetData<Color>(new Color[] { Color.White });// denna sätter vilken färg!
+
+            camera = new Camera(graphics.GraphicsDevice.Viewport);// skapar en ny camera instans
+            ballSimulation = BallSimulation;
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Begin();
+            spriteBatch.Draw(box, camera.GetGameWindow(), Color.Black);// ritar ut boxen eller snarare kvadraten!
+            spriteBatch.Draw(ball, camera.returnPositionOfField(0, 0), null, Color.White, 0f, Vector2.Zero, 0.025f, SpriteEffects.None, 0f);// denna skalar om bollen så att den passar i min skärm
+            spriteBatch.End();
         }
     }
 }
