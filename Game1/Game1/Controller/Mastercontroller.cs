@@ -21,6 +21,9 @@ namespace Game1
         {
 
             graphics = new GraphicsDeviceManager(this);
+            Window.AllowUserResizing = true;
+            graphics.PreferredBackBufferWidth = 100; // detta ändrar fönstrets storlek!
+            graphics.PreferredBackBufferHeight = 100;
             Content.RootDirectory = "Content";
             graphics.ApplyChanges();
         }
@@ -47,8 +50,8 @@ namespace Game1
             // Create a new SpriteBatch, which can be used to draw textures.
             
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            ballVIew = new BallView(graphics, ballSimulation, Content);
             ballSimulation = new BallSimulation();
+            ballVIew = new BallView(graphics, ballSimulation, Content);
 
             // TODO: use this.Content to load your game content here
             //camera = new Camera(GraphicsDevice.Viewport);
@@ -76,7 +79,7 @@ namespace Game1
                 Exit();
 
             // TODO: Add your update logic here
-
+            ballSimulation.update(gameTime);
             base.Update(gameTime);
         }
 

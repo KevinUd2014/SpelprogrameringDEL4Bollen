@@ -10,18 +10,21 @@ namespace Game1.View
     class Camera
     {
 
-        int boardSize = 40;
-        private int sizeOfTile = 64;
-        int heightScale;
-        int widthScale;
+        private int border;
+        private float size;
+        int height;
+        int width;
+        private float scale;
 
 
-        public Camera(Viewport graphics)
+        public Camera(Viewport graphics, int border = 10, float size = 1)
         {
-            int height = graphics.Height;
-            int width = graphics.Width;
+            height = graphics.Height -  border*2; /// har en höjd
+            width = graphics.Width - border * 2; ///har en bredd
+            this.size = size;
+            this.border = border;
 
-            if (height < width)
+            if (height < width)///om höjden är mindre än bredden så sätter vi bredden till höjden!
             {
                 width = height;
             }
@@ -30,23 +33,31 @@ namespace Game1.View
                 height = width;
             }
 
-            float scaleY = width - boardSize * 2;
-            float scaleX = height - boardSize * 2;
+            //float scaleY = width - boardSize * 2;
+            //float scaleX = height - boardSize * 2;
 
-            heightScale = (int)scaleY;
-            widthScale = (int)scaleX;
+            scale = width / size;
+
+            //heightScale = (int)scaleY;
+            //widthScale = (int)scaleX;
         }
 
         public Rectangle GetGameWindow()
         {
-            return new Rectangle(boardSize, boardSize, heightScale, widthScale);
+            return new Rectangle((int)border, (int)border, (int)width, (int)height);
         }
-        public Vector2 returnPositionOfField(int x, int y) //tar emot en x och ett y position
+        public Vector2 returnPositionOfField(float x, float y) ///tar emot en x och ett y position
         {
-            int visualX = boardSize + x * sizeOfTile;
-            int visualY = boardSize + y * sizeOfTile;
+            float visualX = border + x * scale;
+            float visualY = border + y * scale;
 
             return new Vector2(visualX, visualY);
+        }
+
+        public float scaleSizeTo(float rawsize, float size)
+        {
+            float normalized = width / rawsize;
+            return normalized * size;
         }
     }
 }
