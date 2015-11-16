@@ -22,8 +22,8 @@ namespace Game1
 
             graphics = new GraphicsDeviceManager(this);
             Window.AllowUserResizing = true;
-            graphics.PreferredBackBufferWidth = 100; // detta ändrar fönstrets storlek!
-            graphics.PreferredBackBufferHeight = 100;
+            graphics.PreferredBackBufferWidth = 600; // detta ändrar fönstrets storlek!
+            graphics.PreferredBackBufferHeight = 600;
             Content.RootDirectory = "Content";
             graphics.ApplyChanges();
         }
@@ -79,7 +79,7 @@ namespace Game1
                 Exit();
 
             // TODO: Add your update logic here
-            ballSimulation.update(gameTime);
+            ballSimulation.update();
             base.Update(gameTime);
         }
 

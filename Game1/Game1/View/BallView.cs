@@ -35,7 +35,7 @@ namespace Game1.View
             
             spriteBatch.Begin();
             spriteBatch.Draw(box, camera.GetGameWindow(), Color.Black);/// ritar ut boxen eller snarare kvadraten!
-            spriteBatch.Draw(ball, camera.returnPositionOfField(ballSimulation.ball.position.X, ballSimulation.ball.position.Y), null, Color.White, 0f, new Vector2(ball.Width/2,ball.Height/2), camera.scaleSizeTo(ball.Width, ballSimulation.ball.radius * 2f), SpriteEffects.None, 0f);/// denna skalar om bollen så att den passar i min skärm
+            spriteBatch.Draw(ball, camera.returnPositionOfField(ballSimulation.ball.position.X, ballSimulation.ball.position.Y), null, Color.White, 0f, new Vector2(ball.Width/2,ball.Height/2), camera.scaleSizeTo(ball.Width, ballSimulation.ball.getRadius * 2f), SpriteEffects.None, 0f);/// denna skalar om bollen så att den passar i min skärm
             spriteBatch.End();
         }
     }
