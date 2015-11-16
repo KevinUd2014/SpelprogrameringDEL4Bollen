@@ -32,17 +32,10 @@ namespace Game1.View
             {
                 height = width;
             }
-
-            //float scaleY = width - boardSize * 2;
-            //float scaleX = height - boardSize * 2;
-
             scale = width / size;
-
-            //heightScale = (int)scaleY;
-            //widthScale = (int)scaleX;
         }
 
-        public Rectangle GetGameWindow()
+        public Rectangle GetGameWindow()//skapar rectangeln
         {
             return new Rectangle((int)border, (int)border, (int)width, (int)height);
         }
