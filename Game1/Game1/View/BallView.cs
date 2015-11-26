@@ -23,7 +23,7 @@ namespace Game1.View
             box = new Texture2D(graphics.GraphicsDevice, 1, 1);///denna skapar en box
             box.SetData<Color>(new Color[] 
             {
-                Color.White
+                Color.Black
             });/// denna sätter vilken färg!
 
             camera = new Camera(graphics.GraphicsDevice.Viewport);/// skapar en ny camera instans

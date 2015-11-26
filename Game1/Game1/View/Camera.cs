@@ -19,12 +19,12 @@ namespace Game1.View
 
         public Camera(Viewport graphics, int border = 10, float size = 1)
         {
-            height = graphics.Height -  border*2; /// har en höjd
-            width = graphics.Width - border * 2; ///har en bredd
+            height = graphics.Height -  border*2; // har en höjd
+            width = graphics.Width - border * 2; //har en bredd
             this.size = size;
             this.border = border;
 
-            if (height < width)///om höjden är mindre än bredden så sätter vi bredden till höjden!
+            if (height < width)//om höjden är mindre än bredden så sätter vi bredden till höjden!
             {
                 width = height;
             }
@@ -39,7 +39,7 @@ namespace Game1.View
         {
             return new Rectangle((int)border, (int)border, (int)width, (int)height);
         }
-        public Vector2 returnPositionOfField(float x, float y) ///tar emot en x och ett y position
+        public Vector2 returnPositionOfField(float x, float y) //tar emot en x och ett y position
         {
             float visualX = border + x * scale;
             float visualY = border + y * scale;

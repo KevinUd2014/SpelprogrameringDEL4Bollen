@@ -13,13 +13,10 @@ namespace Game1.Model
         {
             ball = new Ball();
         }
-        //public Vector2 getPosition()
-        //{
-        //    return ball.newPosition;
-        //}
+
         public void update() {
             ball.position += ball.getVelocity;
-            if(ball.position.X + ball.getRadius > 1 || ball.position.X - ball.getRadius < 0)
+            if(ball.position.X + ball.getRadius > 1 || ball.position.X - ball.getRadius < 0)//från mitten av bollen + radien på bollen så att bollen nuddar kant med kant!
             {
                 ball.setVelocityX();
                 //ball.velocity.X = -ball.velocity.X;
